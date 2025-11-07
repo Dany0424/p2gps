@@ -1,7 +1,8 @@
-FROM tomcat:7-jre8
+FROM --platform=linux/amd64 tomcat:8.5-jre8-temurin
+COPY drop/*.war /usr/local/tomcat/webapps/ROOT.war
 
 COPY drop/* /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
-ENTRYPOINT ["catalina.sh run", "run"]
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
